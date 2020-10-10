@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="">
+<head>
+    <meta charset="UTF-8">
+    <title>webpack配置</title>
+</head>
+<body>
+<h1>webpack 打包软件的配置</h1>
+<div id="app1">
+    <ul>
+        <li><span>首先work_spac做好开发文件的准备</span></li>
+        <li><span>在终端设备中安装node环境</span></li>
+        <li>
+            <span>在终端设备中安装webpack 模块</span>
+            <dd>
+                <dl>npm install webpack@版本号;<i>或者使用npm install webpack 直接安装最新版本</i></dl>
+                <dl>在work_spac文件夹下使用npm install 安装所需的环境配置，并且初始化npm init</dl>
+                <dl>此时在终端命令模式下使用:webpack entry_filepath output_filepath  save_filename</dl>
+            </dd>
+        </li>
+        <li><span>将经过打包后的文件加载进需要显示的文件脚本中，尝试展示</span></li>
+    </ul>
+</div>
+<hr>
+<div id="app">
+    <h2>vue  instance</h2>
+    <input type="submit" @click="btnclick" value="显示信息">
+    <h4>{{msg}}</h4>
+
+</div>
+<h2>webpack 配置文件升级模式 </h2>
+<ul>
+    <li><b><span>在文件夹下创建webpack专属配置文件webpack.config.js</span></b>
+        <dd>
+            <dl>
+                <span>
+                    <b>
+                        <pre>
+                            const path=require('path')      //引入pnm中的初始化模块中的路径方法
+                            module.exports={                //ES6语法中的模块化方法将相关属性作为API接口方式向外部，抛出
+                            entry:"./src/main.js",           //告诉webpack 打包时的入手文件位置
+                            output:{                           //安排打包好后的文件存放路劲和保存的文件名称
+                            path:path.resolve(__dirname,'dist'),  //__dirname 是node下的内置参数
+                            filename:'bundles.js'}
+                                }                               //目的就是为了不用每次都敲打webpack entry_filepath output_filepath  save_filename
+                        </pre>
+                    </b>
+                </span>
+            </dl>
+        </dd>
+    </li>
+</ul>
+<hr>
+<h2>webpack 命令的映射配置 </h2>
+<ul>
+    <li><b><span>经过npm init 初始化后的webpack有一个专属配置文件package.json文件</span></b></li>
+    <li>
+        <pre>
+            {
+  "name": "firstwebpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "webpack-cli": "^3.3.12",
+    "webpack": "^4.44.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC"
+}
+        </pre>
+    </li>
+    <li><b><pre> "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"</pre></b></li>
+    <li><span>在我们使用npm run PROJECT 时  实际上就使用运行了上述代码中的script脚本，所以想让webpack映射到pnm窗口只需要在脚本中定义一个字段"Name":"webpack",以后那个Name就可以替代npm run PROJECT中的PROJECT</span></li>
+</ul>
+
+</body>
+<script src="./dist/bundles.js"></script>
+<script src="./src/vue.js"></script>
+<script>
+    var vm=new Vue({
+    el:"#app",
+    data:{
+    msg:'学习使用webpack',
+    },
+    methods:{
+    btnclick(){
+    this.msg='寻找webpack 包装文件……'
+    }
+    },
+    })
+</script>
+
+</html>
