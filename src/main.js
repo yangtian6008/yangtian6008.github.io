@@ -6,16 +6,18 @@ console.log(mul(45,20));
 import {name,age} from './js/info.js';
 console.log(name);
 
-require('./css/one.css')
+require('./css/my_normal.css')
+
 import Vue from 'Vue'
-var vm=new Vue({
+const vm = new Vue(
+{
     el:"#app",
     data:{
-    msg:'学习使用webpack',
+        msg1:'学习使用webpack'
     },
     methods:{
-    btnclick(){
-    this.msg='寻找webpack 包装文件……'
-    }
-    },
-    })
+        btnclick(){
+            this.msg1='寻找webpack 包装文件……'
+            }
+         },
+  })

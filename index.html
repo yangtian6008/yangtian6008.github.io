@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>webpack配置</title>
 </head>
+<script src="./dist/bundles.js"></script>
 <body>
 <h1>webpack 打包软件的配置--针对JS</h1>
 <div id="app1">
@@ -25,8 +26,7 @@
 <div id="app">
     <h2>vue  instance</h2>
     <input type="submit" @click="btnclick" value="显示信息">
-    <h4>{{msg}}</h4>
-
+    <h4>{{msg1}}</h4>
 </div>
 <h2>webpack 配置文件升级模式 </h2>
 <ul>
@@ -83,19 +83,5 @@
 
 </body>
 <script src="./dist/bundles.js"></script>
-<script src="./src/vue.js"></script>
-<script>
-    var vm=new Vue({
-    el:"#app",
-    data:{
-    msg:'学习使用webpack',
-    },
-    methods:{
-    btnclick(){
-    this.msg='寻找webpack 包装文件……'
-    }
-    },
-    })
-</script>
 
 </html>
